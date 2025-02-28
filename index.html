@@ -123,67 +123,93 @@
   <!-- about section ends -->
 
   <!-- skills section starts -->
-  <section class="skills" id="skills">
-
-    <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
-
-    <div class="container">
-      <div class="row" id="skillsContainer">
-
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Skills Section</title>
-          <link rel="stylesheet" href="styles.css">
-        </head>
-
-        <body>
-
-          <section id="skills">
-            <h2>Skills</h2>
-            <div class="container">
-              <div class="row" id="skillsContainer">
-                <!-- Skills will be dynamically inserted here -->
-              </div>
-            </div>
-          </section>
-
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              // Fetch the skills.json file
-              fetch("skills.json")
-                .then(response => response.json())
-                .then(skills => {
-                  const skillsContainer = document.getElementById("skillsContainer");
-
-                  skills.forEach(skill => {
-                    const skillDiv = document.createElement("div");
-                    skillDiv.classList.add("skill-item");
-
-                    skillDiv.innerHTML = `
-                            <img src="${skill.icon}" alt="${skill.name}" class="skill-icon">
-                            <span>${skill.name}</span>
-                        `;
-
-                    skillsContainer.appendChild(skillDiv);
-                  });
-                })
-                .catch(error => console.error("Error loading skills:", error));
-            });
-          </script>
-
-        </body>
-
-        <!-- <div class="bar">
-              <div class="info">
-                <img src="https://img.icons8.com/color/48/000000/adobe-xd.png"/>
-                <span>AdobeXD</span>
-              </div>
-            </div> -->
-
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Section</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+      .skills {
+        text-align: center;
+        padding: 20px;
+      }
+  
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: rgba(0, 102, 255, 0.1); /* Light blue background */
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 80%;
+        margin: auto;
+      }
+  
+      .skill-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        width: 120px;
+      }
+  
+      .skill-icon {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  
+  <body>
+  
+    <!-- Skills section starts -->
+    <section class="skills" id="skills">
+      <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+  
+      <div class="container">
+        <div class="row" id="skillsContainer">
+          <!-- Skills will be dynamically inserted here -->
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- Skills section ends -->
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch the skills.json file
+        fetch("skills.json")
+          .then(response => response.json())
+          .then(skills => {
+            const skillsContainer = document.getElementById("skillsContainer");
+  
+            skills.forEach(skill => {
+              const skillDiv = document.createElement("div");
+              skillDiv.classList.add("skill-item");
+  
+              skillDiv.innerHTML = `
+                      <img src="${skill.icon}" alt="${skill.name}" class="skill-icon">
+                      <span>${skill.name}</span>
+                  `;
+  
+              skillsContainer.appendChild(skillDiv);
+            });
+          })
+          .catch(error => console.error("Error loading skills:", error));
+      });
+    </script>
+  
+  </body>
+  </html>
+  
   <!-- skills section ends -->
 
 
