@@ -126,87 +126,257 @@
   <!DOCTYPE html>
   <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills Section</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-      .skills {
-        text-align: center;
-        padding: 20px;
-      }
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Skills & Abilities</title>
+      <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
   
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        background-color: rgba(0, 102, 255, 0.1); /* Light blue background */
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 80%;
-        margin: auto;
-      }
+          body {
+              background-color: #f5f5f5;
+              color: white;
+          }
   
-      .skill-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-        padding: 10px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        width: 120px;
-      }
+          .header {
+              background-color: #5e259f;
+              padding: 20px;
+              text-align: center;
+          }
   
-      .skill-icon {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        margin-bottom: 5px;
-      }
-    </style>
+          .header h1 {
+              font-size: 28px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+          }
+  
+          .header span.yellow {
+              color: #ffd700;
+          }
+  
+          .skills-container {
+              background-color: #422376;
+              padding: 30px;
+              max-width: 1200px;
+              margin: 0 auto;
+          }
+  
+          .skills-grid {
+              display: grid;
+              grid-template-columns: repeat(6, 1fr);
+              gap: 20px;
+          }
+  
+          .skill-card {
+              background-color: #0a0a1a;
+              border-radius: 8px;
+              padding: 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              transition: transform 0.3s;
+              aspect-ratio: 1 / 1;
+          }
+  
+          .skill-card:hover {
+              transform: translateY(-5px);
+          }
+  
+          .skill-card img {
+              width: 48px;
+              height: 48px;
+              margin-bottom: 12px;
+          }
+  
+          .skill-card .skill-name {
+              font-size: 14px;
+              font-weight: 500;
+          }
+  
+          @media (max-width: 1200px) {
+              .skills-grid {
+                  grid-template-columns: repeat(4, 1fr);
+              }
+          }
+  
+          @media (max-width: 768px) {
+              .skills-grid {
+                  grid-template-columns: repeat(3, 1fr);
+              }
+          }
+  
+          @media (max-width: 480px) {
+              .skills-grid {
+                  grid-template-columns: repeat(2, 1fr);
+              }
+          }
+      </style>
   </head>
-  
   <body>
-  
-    <!-- Skills section starts -->
-    <section class="skills" id="skills">
-      <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
-  
-      <div class="container">
-        <div class="row" id="skillsContainer">
-          <!-- Skills will be dynamically inserted here -->
-        </div>
+      <div class="header">
+          <h1>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              Skills & <span class="yellow">Abilities</span>
+          </h1>
       </div>
-    </section>
-    <!-- Skills section ends -->
   
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Fetch the skills.json file
-        fetch("skills.json")
-          .then(response => response.json())
-          .then(skills => {
-            const skillsContainer = document.getElementById("skillsContainer");
+      <div class="skills-container">
+          <div class="skills-grid" id="skillsGrid">
+              <!-- Skills will be added here via JavaScript -->
+          </div>
+      </div>
   
-            skills.forEach(skill => {
-              const skillDiv = document.createElement("div");
-              skillDiv.classList.add("skill-item");
+      <script>
+          const skills = [
+              {
+                  "name": "ReactJS",
+                  "icon": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
+              },
+              {
+                  "name": "ExpressJS",
+                  "icon": "https://img.icons8.com/color/48/000000/express.png"
+              },
+              {
+                  "name": "NodeJS",
+                  "icon": "https://img.icons8.com/color/48/000000/nodejs.png"
+              },
+              {
+                  "name": "Redux",
+                  "icon": "https://img.icons8.com/color/48/000000/redux.png"
+              },
+              {
+                  "name": "Firebase",
+                  "icon": "https://img.icons8.com/color/48/000000/firebase.png"
+              },
+              {
+                  "name": "Android",
+                  "icon": "https://img.icons8.com/fluency/48/000000/android-os.png"
+              },
+              {
+                  "name": "MaterialUI",
+                  "icon": "https://img.icons8.com/color/48/000000/material-ui.png"
+              },
+              {
+                  "name": "ChakraUI",
+                  "icon": "https://img.icons8.com/color/48/000000/chakra-ui.png"
+              },
+              {
+                  "name": "TailwindCSS",
+                  "icon": "https://img.icons8.com/color/48/000000/tailwindcss.png"
+              },
+              {
+                  "name": "Bootstrap",
+                  "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
+              },
+              {
+                  "name": "Sass",
+                  "icon": "https://img.icons8.com/color/48/000000/sass.png"
+              },
+              {
+                  "name": "HTML5",
+                  "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png"
+              },
+              {
+                  "name": "CSS3",
+                  "icon": "https://img.icons8.com/color/48/000000/css3.png"
+              },
+              {
+                  "name": "JavaScript",
+                  "icon": "https://img.icons8.com/color/48/000000/javascript--v1.png"
+              },
+              {
+                  "name": "Java",
+                  "icon": "https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png"
+              },
+              {
+                  "name": "Kotlin",
+                  "icon": "https://img.icons8.com/color/48/000000/kotlin.png"
+              },
+              {
+                  "name": "PHP",
+                  "icon": "https://img.icons8.com/offices/48/000000/php-logo.png"
+              },
+              {
+                  "name": "Python",
+                  "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
+              },
+              {
+                  "name": "C++",
+                  "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
+              },
+              {
+                  "name": "MongoDB",
+                  "icon": "https://img.icons8.com/color/48/000000/mongodb.png"
+              },
+              {
+                  "name": "MySQL",
+                  "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
+              },
+              {
+                  "name": "PostgreSQL",
+                  "icon": "https://img.icons8.com/color/48/000000/postgreesql.png"
+              },
+              {
+                  "name": "AWS",
+                  "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png"
+              },
+              {
+                  "name": "Heroku",
+                  "icon": "https://img.icons8.com/color/48/000000/heroku.png"
+              },
+              {
+                  "name": "Netlify",
+                  "icon": "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/000000/external-netlify-a-cloud-computing-company-that-offers-hosting-and-serverless-backend-services-for-static-websites-logo-shadow-tal-revivo.png"
+              },
+              {
+                  "name": "DigitalOcean",
+                  "icon": "https://img.icons8.com/ios-filled/48/0080ff/digitalocean.png"
+              },
+              {
+                  "name": "JQuery",
+                  "icon": "https://img.icons8.com/ios-filled/48/0769AD/jquery.png"
+              },
+              {
+                  "name": "Git VCS",
+                  "icon": "https://img.icons8.com/color/48/000000/git.png"
+              },
+              {
+                  "name": "GitHub",
+                  "icon": "https://img.icons8.com/glyph-neue/48/ffffff/github.png"
+              },
+              {
+                  "name": "WordPress",
+                  "icon": "https://img.icons8.com/color/48/000000/wordpress.png"
+              }
+          ];
   
-              skillDiv.innerHTML = `
-                      <img src="${skill.icon}" alt="${skill.name}" class="skill-icon">
-                      <span>${skill.name}</span>
-                  `;
+          const skillsGrid = document.getElementById('skillsGrid');
   
-              skillsContainer.appendChild(skillDiv);
-            });
-          })
-          .catch(error => console.error("Error loading skills:", error));
-      });
-    </script>
-  
+          // Generate skill cards
+          skills.forEach(skill => {
+              const skillCard = document.createElement('div');
+              skillCard.className = 'skill-card';
+              
+              skillCard.innerHTML = `
+                  <img src="${skill.icon}" alt="${skill.name}" />
+                  <div class="skill-name">${skill.name}</div>
+              `;
+              
+              skillsGrid.appendChild(skillCard);
+          });
+      </script>
   </body>
   </html>
   
